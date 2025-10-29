@@ -1,3 +1,5 @@
+// app/page.js (or wherever your HomePage is)
+
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ServicesSection from "./components/ServicesSection";
@@ -8,7 +10,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <HeroSection />
-      
       <ServicesSection />
       <AboutSection />
       <WhyChooseUs />
