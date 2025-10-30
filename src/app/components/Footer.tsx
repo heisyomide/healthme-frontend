@@ -1,46 +1,78 @@
 "use client";
 
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaFacebook,
-  FaTwitter,
-} from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaInstagram, FaLinkedin, FaFacebook, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-[#F9FAFB] px-8 py-16 font-inter">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Branding & Social */}
-        <div>
-          <h2 className="text-2xl font-bold text-[#14B8A6] mb-4 tracking-tight">
-            HealthMe
-          </h2>
-          <p className="text-sm mb-6 leading-relaxed text-[#9CA3AF]">
-            HealthMe delivers trusted healthcare at your fingertips — from home
-            visits to teleconsultations, we make care simple, safe, and
-            affordable.
+    <footer className="bg-[#0F172A] text-[#F9FAFB] font-inter px-6 sm:px-10 pt-16 pb-8">
+      {/* MAIN GRID */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* BRANDING */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center sm:text-left"
+        >
+          <h2 className="text-2xl font-bold text-[#14B8A6] mb-4">HealthMe</h2>
+          <p className="text-sm text-[#9CA3AF] mb-6 leading-relaxed">
+            HealthMe brings trusted healthcare to your doorstep — safe, smart,
+            and always reliable.
           </p>
-          <div className="flex space-x-4 text-xl">
-            <FaInstagram className="text-[#14B8A6] hover:text-[#06B6D4] transition cursor-pointer" />
-            <FaLinkedin className="text-[#14B8A6] hover:text-[#06B6D4] transition cursor-pointer" />
-            <FaFacebook className="text-[#14B8A6] hover:text-[#06B6D4] transition cursor-pointer" />
-            <FaTwitter className="text-[#14B8A6] hover:text-[#06B6D4] transition cursor-pointer" />
+          <div className="flex justify-center sm:justify-start gap-4 text-lg">
+            <a
+              href="https://www.instagram.com/yourcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#14B8A6] hover:text-[#0EA5E9] transition cursor-pointer"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/yourcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#14B8A6] hover:text-[#0EA5E9] transition cursor-pointer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://www.facebook.com/yourcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#14B8A6] hover:text-[#0EA5E9] transition cursor-pointer"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://www.twitter.com/yourcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#14B8A6] hover:text-[#0EA5E9] transition cursor-pointer"
+            >
+              <FaTwitter />
+            </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-white">
-            Quick Links
-          </h3>
+        {/* QUICK LINKS */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-center sm:text-left"
+        >
+          <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             {[
               { name: "Home", href: "/" },
-              { name: "Services", href: "#services" },
-              { name: "About", href: "#about" },
-              { name: "Why Choose Us", href: "#whychoose" },
-              { name: "Contact", href: "#contact" },
+              { name: "Services", href: "ser/vices" },
+              { name: "About", href: "/about" },
+              { name: "Why Choose Us", href: "/whychoose" },
+              { name: "Contact", href: "/contact" },
             ].map((link) => (
               <li key={link.name}>
                 <a
@@ -52,73 +84,66 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
-        {/* Contact Info */}
-        <div>
+        {/* CONTACT */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-center sm:text-left"
+        >
           <h3 className="text-lg font-semibold mb-4 text-white">Contact</h3>
-          <p className="text-sm leading-relaxed text-[#9CA3AF]">
+          <p className="text-sm text-[#9CA3AF] leading-relaxed">
             +234 (0) 800 000 9999 <br />
             HealthMe HQ <br />
             22 Care Street, Wellness City, Nigeria
           </p>
-        </div>
+        </motion.div>
 
-        {/* Subscription Form */}
-        <div>
+        {/* SUBSCRIBE */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center sm:text-left"
+        >
           <h3 className="text-lg font-semibold mb-4 text-white">Subscribe</h3>
           <p className="text-sm mb-4 text-[#9CA3AF]">
-            Join our newsletter for medical updates and exclusive wellness
-            insights.
+            Get the latest medical updates and health insights.
           </p>
-          <form className="space-y-3">
+          <form className="flex flex-col sm:flex-row gap-3 sm:items-center">
             <input
               type="email"
               placeholder="Your email"
-              className="w-full px-4 py-2 rounded-md text-[#111827] border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#14B8A6]"
+              className="flex-1 w-full px-4 py-2 rounded-md text-[#111827] border border-[#374151] focus:outline-none focus:ring-2 focus:ring-[#14B8A6]"
             />
             <button
               type="submit"
-              className="w-full bg-linear-to-r from-[#14B8A6] to-[#0EA5E9] text-white px-4 py-2 rounded-md hover:opacity-90 transition font-medium"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#14B8A6] to-[#0EA5E9] text-white px-6 py-2 rounded-md hover:opacity-90 transition font-medium"
             >
               Subscribe
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Partner Logos */}
-      <div className="mt-16 border-t border-[#1E293B] pt-10">
-        <h5 className="text-center text-[#9CA3AF] mb-6 text-sm uppercase tracking-wide">
-          Our Trusted Partners
-        </h5>
-
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          {/* Replace these with your actual logos */}
-          <img
-            src="/logos/partner1.png"
-            alt="Partner 1"
-            className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition"
-          />
-          <img
-            src="/logos/partner2.png"
-            alt="Partner 2"
-            className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition"
-          />
-          <img
-            src="/logos/partner3.png"
-            alt="Partner 3"
-            className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition"
-          />
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-[#1E293B] mt-12 pt-6 text-center">
+      {/* COPYRIGHT */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+        className="border-t border-[#1E293B] mt-12 pt-6 text-center"
+      >
         <p className="text-sm text-[#9CA3AF]">
-          &copy; {new Date().getFullYear()} HealthMe. Your Health, Made Simple.
+          &copy; {new Date().getFullYear()}{" "}
+          <span className="text-[#14B8A6] font-medium">HealthMe</span>. All
+          rights reserved.
         </p>
-      </div>
+      </motion.div>
     </footer>
   );
 }
