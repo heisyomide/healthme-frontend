@@ -41,42 +41,47 @@ export default function SignupPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+ const handleSignup = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    try {
-      const res = await fetch(`${API_BASE}/api/auth/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(form),
-      });
+  try {
+    // 🩺 If practitioner — do NOT register yet
+    if (form.role === "practitioner") {
+      // Save form data locally (for later registration after payment)
+      localStorage.setItem("pendingPractitioner", JSON.stringify(form));
 
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.message || "Registration failed");
-
-      localStorage.setItem("user", JSON.stringify(data.user));
-      alert("✅ Account created successfully!");
-
-      // 👇 redirect based on role
-      if (form.role === "practitioner") {
-        router.push("/kyc"); // go to KYC page for practitioners
-      } else {
-        router.push("/login"); // normal patients go to login
-      }
-    } catch (err: any) {
-      setError(
-        err.message.includes("fetch")
-          ? "Cannot connect to server. Please try again."
-          : err.message
-      );
-    } finally {
-      setLoading(false);
+      // Redirect to Terms & Subscription
+      router.push("/practitioners/terms&sub");
+      return; // 🚫 Stop here — don’t call backend
     }
-  };
+
+    // 👤 Normal patient signup continues here
+    const res = await fetch(`${API_BASE}/api/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.message || "Registration failed");
+
+    localStorage.setItem("user", JSON.stringify(data.user));
+    alert("✅ Account created successfully!");
+    router.push("/login");
+  } catch (err: any) {
+    setError(
+      err.message.includes("fetch")
+        ? "Cannot connect to server. Please try again."
+        : err.message
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="relative flex items-center justify-center min-h-screen bg-linear-to-br from-white via-teal-50 to-white overflow-hidden">
